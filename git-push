@@ -1,0 +1,4 @@
+# github pushing a new branch.
+$ git checkout -b mynewfeature
+... edit files, add and commit ...
+$ git push -u origin mynewfeature

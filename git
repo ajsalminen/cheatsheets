@@ -1,0 +1,105 @@
+# To set your identify:
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
+# To set your editor:
+git config --global core.editor emacs
+
+# To enable color:
+git config --global color.ui true
+
+# To stage all changes for commit:
+git add --all
+
+# To commit staged changes
+git commit -m "Your commit message"
+
+# To edit previous commit message
+git commit --amend
+
+# To push to the tracked master branch:
+git push origin master
+
+# To push to a specified repository:
+git push git@github.com:username/project.git
+
+# To delete the branch "branch_name"
+git branch -D branch_name
+
+# To see who commited which line in a file
+git blame filename
+
+# To sync a fork with the master repo:
+git remote add upstream git@github.com:name/repo.git    # Set a new repo
+git remote -v                                           # Confirm new remote repo
+git fetch upstream                                      # Get branches
+git branch -va                                          # List local - remote branches
+git checkout master                                     # Checkout local master branch
+git checkout -b new_branch                              # Create and checkout a new branch
+git merge upstream/master                               # Merge remote into local repo
+git show 83fb499                                        # Show what a commit did.
+git show 83fb499:path/fo/file.ext                       # Shows the file as it appeared at 83fb499.
+git diff branch_1 branch_2                              # Check difference between branches
+git log                                                 # Show all the commits
+git status                                              # Show the changes from last commit
+
+
+# Custom from default cheat sheet:
+git diff --cached = show staged changes
+
+git reset HEAD file = unstage (git status tells you this)
+git reset --soft <commit> = leave index (staged etc) alone, leave working dir alone and reset to commit
+git reset = only leave working dir alone when resetting
+git reset --hard = reset even the working dir, set HEAD to current or specified commit
+git clean -xfd = remove all the rest that git reset --hard leaves alone
+
+# backtrack a commit with git reset --hard (or --soft)
+# detached head means you have checked out an individual commit with gco <cid>
+# retun to a branch by checking out
+
+# Check out a commit as new branch
+git checkout -b justin a9c146a09505837ec03b
+
+# Search git history for a commit adding a string
+git log -Spassword --all
+
+# Custom stuff not in cheat by standard is below this line.
+
+# Show what commits are in one branch and not the other
+git log a..b
+# Same for diff
+git diff a...b
+# see and learn more at http://stackoverflow.com/questions/462974/what-are-the-differences-between-double-dot-and-triple-dot-in-git-com
+
+# Nonstandard tool:
+gitjk - show how to undo last git command
+
+# checkout a branch in a remote repo locally.
+git checkout -b branch origin/branch
+
+# setting up a new repo on gitolite/github
+git push --set-upstream git@projektit.kirjastot.fi:ansible-role-frank.git master
+
+# search commit history (pickaxe)
+git log -S
+
+# change the commit a branch pointer points to.
+git branch -f branch-name new-tip-commit
+
+# Pull all submodule changes.
+git pull --recurse-submodules
+# But this will not checkout proper commits(the ones your master repository points to) in submodules
+# To checkout proper commits in your submodules you should update them after pulling using
+git submodule update --recursive
+
+# rename a branch
+git branch -m [<oldname>] <newname>
+
+# apply only some files
+git apply --exclude=path
+
+# List files touched by commit (http://stackoverflow.com/questions/424071/list-all-the-files-for-a-commit-in-git)
+git diff-tree --no-commit-id --name-only -r bd61ad98
+
+# Reset all permissions in repo. (https://stackoverflow.com/questions/2517339/how-to-recover-the-file-permissions-to-what-git-thinks-the-file-should-be)
+git diff -p -R --no-color | grep -E "^(diff|(old|new) mode)" --color=never | git apply

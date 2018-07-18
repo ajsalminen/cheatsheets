@@ -1,0 +1,5 @@
+init changes runlevel
+update-rc.d for debian installation of initscript
+service --status-all for what starts at boot (http://www.jamescoyle.net/cheat-sheets/791-update-rc-d-cheat-sheet)
+/etc/rcX.d/ for runlevel links
+runlevel to print current runlevel

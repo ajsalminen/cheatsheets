@@ -1,0 +1,6 @@
+# List files in a package
+dpkg -c package.deb
+# See what version of a package is installed.
+dpkg -s elasticsearch
+# see what package contains file.
+dpkg -S <file>

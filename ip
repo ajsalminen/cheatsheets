@@ -1,0 +1,35 @@
+# Show network devices and configuration
+ifconfig
+ip addr show
+ip link show
+
+# Enable a network interface
+ifconfig eth0 up
+ip link set eth0 up
+
+# A network interface is disabled in a similar way:
+ifconfig eth0 down
+ip link set eth0 down
+
+# Set IP address
+ifconfig eth0 192.168.0.77
+ip address add 192.168.0.77 dev eth0
+
+# Needless to say that the netmask can also be given in CIDR notation, e.g. as 192.168.0.77/24.
+ifconfig eth0 192.168.0.77 netmask 255.255.255.0 broadcast 192.168.0.255
+ip addr add 192.168.0.77/24 broadcast 192.168.0.255 dev eth0
+
+#With ip it is also possible to delete an address:
+ip addr del 192.168.0.77/24 dev eth0
+
+# Add alias interface
+ifconfig eth0:1 10.0.0.1/8
+ip addr add 10.0.0.1/8 dev eth0 label eth0:1
+
+# Add an entry in your ARP table.
+arp -i eth0 -s 192.168.0.1 00:11:22:33:44:55
+ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev eth0
+
+# Switch ARP resolution off on one device
+ifconfig -arp eth0
+ip link set dev eth0 arp off

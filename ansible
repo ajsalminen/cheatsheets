@@ -1,0 +1,1 @@
+ansible all -i production -m setup

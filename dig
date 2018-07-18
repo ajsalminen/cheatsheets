@@ -1,0 +1,5 @@
+# mx record for address
+dig boksit.facingworlds.com mx
+# dkim (if selector/first part is dkim)
+dig dkim._domainkey.webkake.kirjastot.fi txt
+dig droptips.com @ns.123-reg.co.uk

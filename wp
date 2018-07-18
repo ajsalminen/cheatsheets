@@ -1,0 +1,2 @@
+# multisite will look broken without this.
+wp --url=example.com

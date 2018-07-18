@@ -1,0 +1,1 @@
+dmesg -T # convert kernel timestamps to human readable.

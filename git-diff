@@ -1,0 +1,2 @@
+# Drupal module, single file, inside another repo (relative)
+git diff --relative HEAD~ trick_question.module > module-description-issueno-commentno.patch

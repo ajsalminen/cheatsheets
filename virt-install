@@ -1,0 +1,1 @@
+virt-install -n geist -r 2048 --disk /home/libvirt/geist.img,size=20 --accelerate --network bridge=br0 --os-type=linux --disk=/home/antti/tmp/gnu-usb-install-0.8.x86_64-linux --boot hd --noautoconsole -v --vnc

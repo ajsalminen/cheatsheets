@@ -1,0 +1,3 @@
+ /usr/local/sbin/dirvish --init           --vault  tomusr
+ /usr/local/sbin/dirvish --init           --branch rh9usr:dick
+ /usr/local/sbin/dirvish --reference dick --branch rh9usr:jane

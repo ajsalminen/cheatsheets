@@ -1,0 +1,25 @@
+# Printout date in format suitable for affixing to file names
+date +"%Y%m%d_%H%M%S"
+
+# Custom:
+date -d '21:30 CET'
+date -d +'19 hours'
+date -d '@unixtimestamp'
+
+It's 6pm in Taipei, what time is it here?
+
+date --date='TZ="Asia/Taipei" 18:00'
+Fri Jul 16 11:00:00 BST 2010
+At 11am here in London, what time is it in Taipei?
+
+TZ=Asia/Taipei date -d "11:00 BST"
+Fri Jul 16 18:00:00 CST 2010
+
+It gives the local time corresponding to 9AM on the west coast of the US, accounting for differing day light savings transitions.
+
+date --date='TZ="America/Los_Angeles" 09:00 next Fri'
+
+Use tzselect to get the TZ. The PST format is ambiguous. IST = Indian Standard Time and Irish Summer Time for example.
+
+# other way around (current time for a different TZ)
+TZ='America/Los_Angeles' date

@@ -1,0 +1,7 @@
+M-Q = fasd dirs and files (I think)
+ret = also ls
+M-M = go up a dir
+M-S = execute with sudo
+
+aliases:
+ne <filename> - Create a new file and open in emacs

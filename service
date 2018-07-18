@@ -1,0 +1,3 @@
+# [ + ] – Services with this sign will start at OS boot.
+# [ – ] – Services with this sign do not start at OS boot.
+service --status-all

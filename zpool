@@ -1,0 +1,10 @@
+zpool status (-v) backup
+zpool list
+zpool history
+# expand a disk to fill space
+zpool online -e backup /dev/xbd1
+# scrub
+zpool scrub backup
+zpool export backup
+zpool import backup
+zpool set autoexpand=on backup

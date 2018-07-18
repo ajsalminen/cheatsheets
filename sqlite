@@ -1,0 +1,4 @@
+# alternatives for mysql describe
+.schema TABLENAME
+PRAGMA table_info([tablename]);
+.tables

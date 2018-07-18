@@ -1,0 +1,5 @@
+tcpdump -A port 25 -i eth0 - debug smtp (like HELO host name)
+tcpdump -nnvvv -i eth0 host 10.0.2.2 # debug a host
+tcpdump -A not port 22 # All non-SSH traffic.
+# print out the hexdump of packets
+tcpdump -i lo -Xs 0

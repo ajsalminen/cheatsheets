@@ -1,0 +1,9 @@
+# Answer from http://stackoverflow.com/questions/10739390/how-to-programmatically-change-volume-in-ubuntu
+Ubuntu uses pulseaudio as sounderver. It can be controlled from the command line using the pactl and pacmd utilities, for example:
+pactl set-sink-volume 0 120%
+would set the volume of the sink #0 to 120%.
+see: man pactl and pacmd help
+edit:
+to avoid -xx being interpreted as command line option you must prefix it with -- . That stops option parsing from that point:
+pactl set-sink-volume 0 -- -20%    # or:
+pactl -- set-sink-volume 0 -20%    # doesn't matter where the `--` goes

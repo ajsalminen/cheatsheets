@@ -1,0 +1,48 @@
+# To connect to a database
+mysql -h localhost -u root -p
+
+# To backup all databases
+mysqldump --all-databases --all-routines -u root -p > ~/fulldump.sql
+
+# To restore all databases
+mysql -u root -p  < ~/fulldump.sql
+
+# To create a database in utf8 charset
+CREATE DATABASE owa CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+# To add a user and give rights on the given database
+GRANT ALL PRIVILEGES ON database.* TO 'user'@'localhost'IDENTIFIED BY 'password' WITH GRANT OPTION;
+
+Custom stuff:
+# Drop all tables of a database (without drop and recreate)
+mysqldump -u[user] -p[ssht...] --add-drop-table --no-data [DATABASE] | grep ^DROP | mysql -u[user] -p[sshht...] [DATABASE]
+
+Current database:
+select database() (from dual); - last part is for oracle...
+
+Debugging charset issues:
+select title,hex(title),char_length(title),length(title) from aggregator_item where fid = 72 and iid = 56706;
+
+Restore single database from full dump:
+mysql -D mydatabase -o < dump.sql
+
+# Display users (empty password is bad)
+SELECT User, Host, Password FROM mysql.user;
+
+For Schemas:
+
+SELECT default_character_set_name FROM information_schema.SCHEMATA S
+WHERE schema_name = "schemaname";
+For Tables:
+
+SELECT CCSA.character_set_name FROM information_schema.`TABLES` T,
+       information_schema.`COLLATION_CHARACTER_SET_APPLICABILITY` CCSA
+WHERE CCSA.collation_name = T.table_collation
+  AND T.table_schema = "schemaname"
+  AND T.table_name = "tablename";
+For Columns:
+
+SELECT character_set_name FROM information_schema.`COLUMNS` C
+WHERE table_schema = "schemaname"
+  AND table_name = "tablename"
+  AND column_name = "columnname";

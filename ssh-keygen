@@ -1,0 +1,23 @@
+# To generate an SSH key:
+ssh-keygen -t rsa
+
+# To generate a 4096-bit SSH key:
+ssh-keygen -t rsa -b 4096
+
+# To update a passphrase on a key
+ssh-keygen -p -P old_passphrase -N new_passphrase -f /path/to/keyfile
+
+# To remove a passphrase on a key
+ssh-keygen -p -P old_passphrase -N '' -f /path/to/keyfile
+
+# To generate a 4096 bit RSA key with a passphase and comment containing the user and hostname
+ssh-keygen -t rsa -b 4096 -C "$USER@$HOSTNAME" -P passphrase
+
+Local modifications:
+fingerprint for single host (to check a changed one): ssh-keygen -l -f ~/.ssh/known_hosts -F mach1
+
+# public key for a private key
+ssh-keygen -y -f ~/.ssh/id_rsa
+
+# fingerprint from pubkey
+$ ssh-keygen -lf ~/.ssh/id_rsa.pub

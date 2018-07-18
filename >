@@ -1,0 +1,7 @@
+# first redirect stdout to >/dev/null and then stderr to stdout
+# order matters, if you do the latter first, stdout is not yet going to null
+echo 'test' > /dev/null 2>&1
+
+# Compares two directory listings, uses redirection to a fd device for it.
+# zsh alternative =(cmd) creates a temp file instead of a fd device.
+comm <(ls -a dir1) <(ls -a dir2)

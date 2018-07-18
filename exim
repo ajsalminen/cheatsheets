@@ -1,0 +1,8 @@
+# view queue
+exim -bp
+
+# Remove from queue
+exim -Mrm <id>
+
+# Force send.
+exim -M <id>

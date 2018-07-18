@@ -1,0 +1,11 @@
+# Read from {/dev/urandom} 2*512 Bytes and put it into {/tmp/test.txt}
+# Note: At the first iteration, we read 512 Bytes.
+# Note: At the second iteration, we read 512 Bytes.
+dd if=/dev/urandom of=/tmp/test.txt count=512 bs=2
+kill -SIGUSR1 makes dd print it's status
+
+[21:36:00] <+sponge> hey kids-- I just figgured out a way to make dd faster for
+wiping disks. I've been looking and looking, and it's been under our noses the
+entire time
+[21:36:35] <+sponge> dd is now 33 times faster for me
+[21:37:31] <+sponge> oflag=direct bs=32768

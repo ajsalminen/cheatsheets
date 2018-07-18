@@ -1,0 +1,38 @@
+# To ssh via pem file (which normally needs 0600 permissions):
+ssh -i /path/to/file.pem user@example.com
+
+# To connect on an non-standard port:
+ssh -p 2222 user@example.com
+
+# To execute a command on a remote server:
+ssh -t user@example.com 'the-remote-command'
+
+# To tunnel an x session over SSH:
+ssh -X user@example.com
+
+# To launch a specific x application over SSH:
+ssh -X -t user@example.com 'chromium-browser'
+
+# To create a SOCKS proxy on localhost and port 9999
+ssh -D 9999 user@example.com
+
+# For more information, see:
+# http://unix.stackexchange.com/q/12755/44856
+
+Useful escape sequences:
+~.  - terminate connection (and any multiplexed sessions)
+~C  - open a command line
+~^Z - suspend ssh
+~#  - list forwarded connections
+~&  - background ssh (when waiting for connections to terminate)
+~?  - list all escape sequences
+~~  - send the escape character by typing it twice
+
+(Note that escapes are only recognized immediately after newline.)
+
+# Custom additions
+# SSH reverse tunnel, forward local port 22 and listen on remote 2255
+ssh remotehost.example.com -f -N -T -R2255:localhost:22
+
+# SSH tunnel, listen on local 555 and forward to remote 666
+ssh remotehost.example.com -L555:localhost:666 -N

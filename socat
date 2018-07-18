@@ -1,0 +1,4 @@
+# listen in on a program communicating thru unix socket
+socat -v UNIX-LISTEN:/tmp/socat-listen UNIX-CONNECT:/path/to/real.socket
+# write on the socket like with telnet
+socat -v READLINE UNIX-CONNECT:/path/to/real.socket
